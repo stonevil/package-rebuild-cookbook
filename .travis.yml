@@ -1,4 +1,5 @@
 language: ruby
 script: "gem install foodcritic && foodcritic -f any ."
+script: "gem install tailor && tailor"
 rvm:
   - 1.9.3
