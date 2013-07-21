@@ -19,7 +19,7 @@
 
 # Purge package from the system
 case node["platform_family"]
-  when "debian"
+when "debian"
   package node['package']['name'] do
     action :purge
     ignore_failure true
@@ -37,41 +37,41 @@ end
 
 # Add custom repo in case of requirements
 case node["platform_family"]
-  when "debian"
-    apt_repository node['package']['name'] do
-      uri node['package']['uri']
-      distribution node["lsb"]["codename"]
-      components [node['package']['name']]
-      key node['package']['key']
-      deb_src true
-      action :add
-      not_if { node['package']['uri'].empty? }
-    end
+when "debian"
+  apt_repository node['package']['name'] do
+    uri node['package']['uri']
+    distribution node["lsb"]["codename"]
+    components [node['package']['name']]
+    key node['package']['key']
+    deb_src true
+    action :add
+    not_if { node['package']['uri'].empty? }
+  end
 end
 
 # Download source package
 case node["platform_family"]
-  when "debian"
-    execute "Download package from repository" do
-      cwd node['package']['folder_path']
-      command "apt-get source #{node['package']['name']}=#{node['package']['version']}"
-    end
+when "debian"
+  execute "Download package from repository" do
+    cwd node['package']['folder_path']
+    command "apt-get source #{node['package']['name']}=#{node['package']['version']}"
+  end
 end
 
 # Install dependencies
 case node["platform_family"]
-  when "debian"
-    execute "Install dependencies" do
-      cwd node['package']['folder_path']
-      command "apt-get -y build-dep #{node['package']['name']}=#{node['package']['version']}"
-    end
+when "debian"
+  execute "Install dependencies" do
+    cwd node['package']['folder_path']
+    command "apt-get -y build-dep #{node['package']['name']}=#{node['package']['version']}"
+  end
 end
 
 # Prepare source for build
 case node["platform_family"]
-  when "debian"
-    execute "Prepare source for build" do
-      cwd node['package']['folder_path']
-      command "dpkg-source -x #{node['package']['name']}_#{node['package']['version']}*.dsc"
-    end
+when "debian"
+  execute "Prepare source for build" do
+    cwd node['package']['folder_path']
+    command "dpkg-source -x #{node['package']['name']}_#{node['package']['version']}*.dsc"
+  end
 end
