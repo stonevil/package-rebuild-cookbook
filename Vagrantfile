@@ -88,9 +88,6 @@ Vagrant.configure("2") do |config|
   # to skip installing and copying to Vagrant's shelf.
   # config.berkshelf.except = []
 
-#  config.vm.provision :shell,
-#      :inline => "apt-get update && apt-get -y upgrade"
-
   config.vm.provision :shell,
     :inline => "gem update --no-rdoc --no-ri"
 
