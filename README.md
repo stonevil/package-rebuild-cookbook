@@ -34,24 +34,24 @@ Debian attributes
 RedHat attributes
 -----------------
 
-TODO
+TBD
 
 Usage
 =====
 
-TODO
+TBD
 
 Recipes
 =======
 
-TODO
+TBD
 
 TODO
 ====
 
 * Add RedHat platform family support
 * Finish documentation
-* Implement 
+* Implement LWRP model
 
 License and Author
 ==================
