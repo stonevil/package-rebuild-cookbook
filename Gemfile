@@ -11,5 +11,9 @@ group :development do
 end
 
 group :development do
+  gem 'guard-stainer'
+end
+
+group :development do
   gem 'terminal-notifier-guard'
 end
