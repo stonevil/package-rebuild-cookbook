@@ -10,6 +10,6 @@ version          '0.3.0'
   supports os
 end
 
-depends "build-essential"
-depends "apt"
-depends "packages-update"
+depends 'build-essential'
+depends 'apt'
+depends 'packages-update'

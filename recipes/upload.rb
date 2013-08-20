@@ -24,9 +24,9 @@ directory node['package']['folder_pkg'] do
 end
 
 # Move packages
-case node["platform_family"]
-when "debian"
-  execute "Share packages with shared folder" do
+case node['platform_family']
+when 'debian'
+  execute 'Share packages with shared folder' do
     cwd node['package']['folder_path']
     command "mv *.deb #{node['package']['folder_pkg']}/"
     not_if { node['package']['folder_pkg'].empty? }

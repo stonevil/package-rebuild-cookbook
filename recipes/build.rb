@@ -18,10 +18,10 @@
 #
 
 # Build packages
-case node["platform_family"]
-when "debian"
-  execute "Build packages" do
+case node['platform_family']
+when 'debian'
+  execute 'Build packages' do
     cwd "#{node['package']['folder_path']}/#{node['package']['name']}-#{node['package']['version']}"
-    command "dpkg-buildpackage -rfakeroot -uc -b"
+    command 'dpkg-buildpackage -rfakeroot -uc -b'
   end
 end
