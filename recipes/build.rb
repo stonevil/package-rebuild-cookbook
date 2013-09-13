@@ -24,8 +24,9 @@ when 'debian'
     # Set custom packages source folder
     if !node['package']['folder'].empty?
       cwd "#{node['package']['folder_path']}/#{node['package']['folder']}"
+    else
+      cwd "#{node['package']['folder_path']}/#{node['package']['name']}-#{node['package']['version']}"
     end
-    cwd "#{node['package']['folder_path']}/#{node['package']['name']}-#{node['package']['version']}"
     command 'dpkg-buildpackage -rfakeroot -uc -b'
   end
 end
