@@ -21,6 +21,10 @@
 case node['platform_family']
 when 'debian'
   execute 'Build packages' do
+    # Set custom packages source folder
+    if !node['package']['folder'].empty?
+      cwd "#{node['package']['folder_path']}/#{node['package']['folder']}"
+    end
     cwd "#{node['package']['folder_path']}/#{node['package']['name']}-#{node['package']['version']}"
     command 'dpkg-buildpackage -rfakeroot -uc -b'
   end
