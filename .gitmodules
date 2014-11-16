@@ -1,3 +1,0 @@
-[submodule "foodcritic/customink"]
-	path = foodcritic/customink
-	url = https://github.com/customink-webops/foodcritic-rules.git
